@@ -1,0 +1,55 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "matches": {
+      "$matchId": {
+        ".read": "auth != null",
+        "presence": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid",
+            "connected": { ".validate": "newData.isBoolean()" },
+            "name": { ".validate": "newData.isString() && newData.val().length <= 40" }
+          }
+        }
+      }
+    },
+
+    "questionsPublic": {
+      "$matchId": {
+        ".read": "auth != null",
+        ".write": false
+      }
+    },
+
+    "answers": {
+      "$matchId": {
+        "$questionId": {
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid && !data.exists() && root.child('matches').child($matchId).child('phase').val() === 'QUESTION_OPEN' && root.child('matches').child($matchId).child('currentQuestionId').val() === $questionId",
+            "choiceId": { ".validate": "newData.isString()" },
+            "clientSubmitAt": { ".validate": "newData.isNumber()" },
+            "serverWriteTime": { ".validate": "newData.isNumber() && newData.val() == now" },
+            "$other": { ".validate": false }
+          }
+        }
+      }
+    },
+
+    "reveal": {
+      "$matchId": {
+        ".read": "auth != null",
+        ".write": false
+      }
+    },
+
+    "scores": {
+      "$matchId": {
+        ".read": "auth != null",
+        ".write": false
+      }
+    }
+  }
+}

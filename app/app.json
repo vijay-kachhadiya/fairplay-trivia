@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "FairPlay Trivia",
+    "slug": "fairplay-trivia",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "fairplay",
+    "backgroundColor": "#F4F5F7",
+    "splash": {
+      "backgroundColor": "#FFFFFF"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.fairplay.trivia"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "fairplay-trivia-functions",
+  "description": "The referee. Cloud Functions that open and close each question, score on server time, and write the leaderboard. Clients never compute a score.",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": "20"
+  },
+  "scripts": {
+    "seed": "node seed.js",
+    "serve": "firebase emulators:start",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^5.1.1"
+  }
+}
